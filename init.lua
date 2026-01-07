@@ -17,3 +17,7 @@ opt.clipboard = "unnamedplus"
 opt.termguicolors = true
 opt.timeout = true
 opt.timeoutlen = 250
+opt.textwidth = 120
+opt.colorcolumn = "120"
+opt.cursorline = true
+-- opt.cursorcolumn = true
