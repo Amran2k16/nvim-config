@@ -21,3 +21,4 @@ opt.textwidth = 120
 opt.colorcolumn = "120"
 opt.cursorline = true
 -- opt.cursorcolumn = true
+opt.shada = "!,'100,<50,s10,h"
