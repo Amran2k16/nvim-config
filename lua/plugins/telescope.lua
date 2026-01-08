@@ -3,23 +3,30 @@ return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+        require("telescope").setup({
+            defaults = {
+                theme = "ivy",
+            },
+        })
+    end,
     keys = {
         {
-            "<leader>ff",
+            "<leader>f",
             function()
                 builtin.find_files()
             end,
             desc = "Find files",
         },
         {
-            "<leader>fg",
+            "<leader>g",
             function()
                 builtin.live_grep()
             end,
             desc = "Live grep",
         },
         {
-            "<leader>f/",
+            "<leader>/",
             function()
                 builtin.live_grep({ search_dirs = { vim.fn.expand("%:p") }, prompt_title = "Grep Current File" })
             end,
