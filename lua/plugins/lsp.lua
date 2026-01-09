@@ -6,6 +6,34 @@ return {
         { "hrsh7th/cmp-nvim-lsp" },
     },
     config = function()
+        -- mason-lspconfig expects newer mason.nvim APIs; add compatibility shims.
+        do
+            local registry = require("mason-registry")
+            if not registry.__lspconfig_refresh_compat then
+                registry.__lspconfig_refresh_compat = true
+                local original_refresh = registry.refresh
+                registry.refresh = function(cb)
+                    if not cb then
+                        return original_refresh()
+                    end
+                    return original_refresh(function()
+                        cb(true, {})
+                    end)
+                end
+            end
+
+            local Package = require("mason-core.package")
+            if not Package.is_installing then
+                function Package:is_installing()
+                    return self:get_handle()
+                        :map(function(handle)
+                            return not handle:is_closed() and not handle:is_idle()
+                        end)
+                        :or_else(false)
+                end
+            end
+        end
+
         require("mason-lspconfig").setup({
             ensure_installed = { "ts_ls", "biome" },
             automatic_installation = true,
