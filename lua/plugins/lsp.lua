@@ -32,6 +32,13 @@ return {
             virtual_text = true,
         })
 
+        vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(event)
+                local opts = { buffer = event.buf, silent = true }
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+            end,
+        })
+
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
                 vim.lsp.buf.format({

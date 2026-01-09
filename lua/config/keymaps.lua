@@ -8,6 +8,8 @@ vim.keymap.set("n", "<C-w>z", "<cmd>vsplit #<CR>", { desc = "Vsplit alternate bu
 
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics under cursor" })
 
+vim.keymap.set("n", "<leader>rr", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local opts = { buffer = args.buf }
@@ -15,6 +17,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf, desc = "LSP rename" })
     end,
 })
 
