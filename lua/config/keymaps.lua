@@ -32,3 +32,7 @@ vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
 vim.keymap.set("i", "<C-s>", "<C-o><cmd>w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<C-o>", "<C-i>", { desc = "Jump forward" })
 vim.keymap.set("n", "<C-i>", "<C-o>", { desc = "Jump backward" })
+
+
+-- Code actions
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })

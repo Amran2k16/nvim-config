@@ -23,6 +23,14 @@ return {
 
         vim.lsp.config("biome", {
             capabilities = capabilities,
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "json",
+                "jsonc",
+            },
         })
 
         vim.lsp.enable("ts_ls")
