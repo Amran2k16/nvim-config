@@ -1,6 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
+    commit = "0d8b6eaa0b5ae6bb3d9785f7a3ba4a4c6c1b1af2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
         require("telescope").setup({
