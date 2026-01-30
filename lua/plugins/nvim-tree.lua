@@ -4,6 +4,12 @@ return {
     lazy = false,
     dependencies = {
         "nvim-tree/nvim-web-devicons",
+        {
+            "antosha417/nvim-lsp-file-operations",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+            },
+        },
     },
     keys = {
         {
@@ -16,5 +22,6 @@ return {
     },
     config = function()
         require("nvim-tree").setup {}
+        require("lsp-file-operations").setup()
     end,
 }
